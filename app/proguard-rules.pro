@@ -19,3 +19,16 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# 不混淆im sdk
+-keep class cn.bmob.newim.**{*;}
+-dontwarn cn.bmob.newim.**
+# 不混淆greenDao类
+-dontwarn de.greenrobot.dao.**
+-keep class de.greenrobot.dao.** { *;}
+-keepclassmembers class * extends de.greenrobot.dao.AbstractDao {
+    public static java.lang.String TABLENAME;
+}
+-keep class **$Properties
+# 不混淆async
+-dontwarn com.koushikdutta.async.**
+-keep class com.koushikdutta.async.** { *;}

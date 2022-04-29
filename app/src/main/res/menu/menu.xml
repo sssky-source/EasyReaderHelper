@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mune_uncomplete"
+        android:orderInCategory="100"
+        android:title="未被借"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/mune_ongoing"
+        android:orderInCategory="100"
+        android:title="正在借"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/mune_complete"
+        android:orderInCategory="100"
+        android:title="已完成"
+        app:showAsAction="never"/>
+</menu>

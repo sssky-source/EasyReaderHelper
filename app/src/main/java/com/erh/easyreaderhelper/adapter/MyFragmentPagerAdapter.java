@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.erh.easyreaderhelper.fragment.ChatFragment;
 import com.erh.easyreaderhelper.ui.MainActivity;
 import com.erh.easyreaderhelper.fragment.Fourfragment;
 import com.erh.easyreaderhelper.fragment.Onefragment;
-import com.erh.easyreaderhelper.fragment.Threefragment;
 import com.erh.easyreaderhelper.fragment.Twofragment;
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
@@ -17,14 +17,16 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private Onefragment onefragment;
     private Twofragment twofragment;
-    private Threefragment threefragment;
+   // private Threefragment threefragment;
+    private ChatFragment threefragment;
     private Fourfragment fourfragment;
 
     public MyFragmentPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);
         onefragment = new Onefragment();
         twofragment = new Twofragment();
-        threefragment = new Threefragment();
+     //   threefragment = new Threefragment();
+        threefragment = new ChatFragment();
         fourfragment = new Fourfragment();
     }
 

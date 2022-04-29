@@ -19,6 +19,8 @@
         android:paddingRight="20dp"
         android:paddingBottom="30dp">
 
+
+
         <RelativeLayout
             android:id="@+id/sel1"
             android:layout_width="0dp"
@@ -67,7 +69,7 @@
                 android:layout_below="@+id/image2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="7dp"
-                android:text="问答收藏"
+                android:text="我租借的"
                 android:textColor="@color/colorblack"
                 android:textSize="18sp" />
 
@@ -94,7 +96,7 @@
                 android:layout_below="@+id/image3"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="7dp"
-                android:text="我的回答"
+                android:text="已借出的"
                 android:textColor="@color/colorblack"
                 android:textSize="18sp" />
 
@@ -108,6 +110,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/shape_mine_head_bg"
         android:elevation="10dp"
+        android:adjustViewBounds="true"
         android:src="@drawable/head"
         android:scaleType="centerCrop"
         android:layout_width="100dp"

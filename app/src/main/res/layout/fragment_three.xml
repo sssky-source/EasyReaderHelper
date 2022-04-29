@@ -6,12 +6,9 @@
     android:orientation="vertical">
 
 
-    <TextView
-        android:id="@+id/three_text"
-        android:text="testthree"
-        android:textColor="#d5d5d5"
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
+
+    <include
+        layout="@layout/layout_floatingmenu"/>
 
 </RelativeLayout>

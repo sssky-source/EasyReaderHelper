@@ -1,6 +1,7 @@
 package com.erh.easyreaderhelper.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.erh.easyreaderhelper.R;
-import com.erh.easyreaderhelper.bean.LostInfomationReq;
+import com.erh.easyreaderhelper.bean.Informationpublished;
+import com.erh.easyreaderhelper.ui.DetailedInformationActivity;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class LostAndFoundAdapter extends RecyclerView.Adapter<LostAndFoundAdapter.LostAndFoundHolder> {
     private Context mContext;
-    private List<LostInfomationReq> lostInfosData;
+    private List<Informationpublished> lostInfosData;
     private ItemClickListener mItemClickListener;
     public final static int EDIT_CODE = 998;
     public final static int DELETE_CODE = 997;
@@ -32,7 +34,7 @@ public class LostAndFoundAdapter extends RecyclerView.Adapter<LostAndFoundAdapte
         this.mContext = context;
     }
 
-    public void setData(List<LostInfomationReq> data) {
+    public void setData(List<Informationpublished> data) {
         this.lostInfosData = data;
     }
 
@@ -46,12 +48,24 @@ public class LostAndFoundAdapter extends RecyclerView.Adapter<LostAndFoundAdapte
     @Override
     public void onBindViewHolder(final LostAndFoundHolder holder, final int position) {
         if (lostInfosData != null) {
-            LostInfomationReq lostInfomationReq = lostInfosData.get(position);
-            holder.title.setText(lostInfomationReq.getTitle());
-            holder.desc.setText(lostInfomationReq.getDesc());
-            holder.phoneNum.setText(lostInfomationReq.getPhoneNum());
-            holder.time.setText(lostInfomationReq.getCreatedAt());
+            Informationpublished informationpublished = lostInfosData.get(position);
+            holder.title.setText(informationpublished.getTitle());
+            holder.desc.setText(informationpublished.getDesc());
+            holder.phoneNum.setText(informationpublished.getPhoneNum());
+            holder.time.setText(informationpublished.getCreatedAt());
+            String name = informationpublished.getName();
+            String objectId = informationpublished.getObjectId();
 
+            holder.llItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(mContext, DetailedInformationActivity.class);
+                    intent.putExtra("name",name);
+                    intent.putExtra("objectId",objectId);
+                    mContext.startActivity(intent);
+                }
+            });
+            /*
             holder.llItem.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
@@ -60,6 +74,7 @@ public class LostAndFoundAdapter extends RecyclerView.Adapter<LostAndFoundAdapte
                     return false;
                 }
             });
+             */
         }
     }
 

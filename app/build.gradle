@@ -4,9 +4,12 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+
     defaultConfig {
-        applicationId "com.example.easyreaderhelper"
-        minSdkVersion 16
+        applicationId "com.erh.easyreaderhelper"
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -21,45 +24,74 @@ android {
         }
     }
 
-    compileOptions {
 
-        sourceCompatibility JavaVersion.VERSION_1_8
-
-        targetCompatibility JavaVersion.VERSION_1_8
-
+    lintOptions {
+        abortOnError false
+        //忽略警告
+        ignoreWarnings true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 
     //**兼容Android6.0系统所需，如果这句话报错，可在dependencies标签下使用compile 'cn.bmob.android:http-legacy:1.0'**
     useLibrary 'org.apache.http.legacy'
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    //noinspection GradleCompatible
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
 
-    //以下SDK开发者请根据需要自行选择
-    //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:
-    //3.5.5：请务必查看下面注释[1]
-    implementation 'cn.bmob.android:bmob-sdk:3.5.5'
+   // implementation 'cn.bmob.android:bmob-im:2.1.5@aar'
+  //  implementation 'cn.bmob.android:bmob-sdk:3.7.8'
+ //   implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    // implementation 'io.github.bmob:android-sdk:3.8.2'
+    //TODO  集成：1.2、配置IM SDK（bmob-im）版本和Data SDK（bmob-sdk）版本：特定版本的bmob-im依赖特定版本的bmob-sdk
+    implementation 'io.github.bmob:android-sdk:3.8.2'
 
-    //bmob-push：Bmob的推送包
-    implementation 'cn.bmob.android:bmob-push:0.8'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
 
-    //bmob-im：Bmob的即时通讯包，注意每个版本的im依赖特定版本的bmob-sdk，具体的依赖关系可查看下面注释[2]
-    implementation 'cn.bmob.android:bmob-im:2.0.5@aar'
-    implementation 'cn.bmob.android:bmob-sdk:3.4.7-aar'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.8"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+  //  implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+    implementation 'com.squareup.okio:okio:2.2.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
 
-    //bmob-sms ：Bmob单独为短信服务提供的包
-    implementation 'cn.bmob.android:bmob-sms:1.0.1'
-
+    //推送服务？
+    implementation 'cn.bmob.android:bmob-push:1.0.3'
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
     implementation 'cn.bmob.android:http-legacy:1.0'
+
+    implementation 'pub.devrel:easypermissions:3.0.0'
+    //Material库
+    implementation 'com.google.android.material:material:1.2.0'
+    //RecyclerView的好搭档
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    implementation 'com.github.stephanenicolas:butterknife:10.0.0.6'
+    //热门强大的图片加载器
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //权限请求框架
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.0'
+    implementation 'io.hyphenate:hyphenate-chat:3.8.4'
+    implementation project(':ease-im-kit')
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    testImplementation 'junit:junit:4.+'
+
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+
 }

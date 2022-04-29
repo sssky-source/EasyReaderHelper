@@ -60,6 +60,8 @@ public class SystemInformation extends LinearLayout {
                     Toast.makeText(getContext(),"你点击了关于",Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.image4:
+                    BmobUser.logOut();   //清除缓存用户对象
+                    BmobUser currentUser = BmobUser.getCurrentUser(BmobUser.class); // 现在的currentUser是null了
                     Intent intent = null;
                     intent = new Intent(getContext(), LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     getContext().startActivity(intent);

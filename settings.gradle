@@ -1,2 +1,2 @@
-rootProject.name='EasyReaderHelper'
-include ':app'
+
+include ':app', ':ease-im-kit'

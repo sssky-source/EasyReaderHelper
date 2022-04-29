@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login_bg">
+    android:background="@drawable/bgtwo">
 
     <LinearLayout
         android:id="@+id/ll_login"
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/i8_login_account" />
+                android:src="@drawable/i8_login_a3ccount" />
 
 
             <EditText
@@ -86,17 +86,15 @@
                 android:textColorHint="#ababab"
                 android:textSize="16sp" />
 
-            <ToggleButton
-                android:id="@+id/i8_usercenter_autoLogin"
+            <CheckBox
+                android:id="@+id/login_check"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="12dp"
-                android:background="@drawable/i8_login_eye"
-                android:checked="false"
-                android:text=""
-                android:textOff=""
-                android:textOn="" />
+                android:background="@drawable/bukejian"
+                android:button="@null"
+                android:checked="false"/>
 
         </LinearLayout>
 
@@ -146,7 +144,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="14dp"
             android:text="注册账号"
-            android:textColor="#ababab" />
+            android:textColor="#808080" />
     </LinearLayout>
 
     <ProgressBar

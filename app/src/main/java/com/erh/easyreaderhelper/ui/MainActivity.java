@@ -36,6 +36,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
         initView();
         rb_one.setChecked(true);
@@ -77,6 +78,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
             case R.id.four_tab:
                 vpager.setCurrentItem(PAGE_FOUR);
                 break;
+                default:
         }
     }
 

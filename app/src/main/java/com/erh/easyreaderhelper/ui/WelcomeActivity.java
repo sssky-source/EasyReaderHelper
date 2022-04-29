@@ -23,11 +23,12 @@ public class WelcomeActivity extends BaseActivity {
             public void run() {
 
                 //获取缓存中的用户对象
-                BmobUser currentUser = BmobUser.getCurrentUser();
+                BmobUser currentUser = BmobUser.getCurrentUser(BmobUser.class);
                 if (currentUser != null) {
                     //允许用户使用应用，进入程序
-                    Intent intent = new Intent(WelcomeActivity.this, LostAndFoundActivity.class);
+                    Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     //进入登录界面
                     Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);

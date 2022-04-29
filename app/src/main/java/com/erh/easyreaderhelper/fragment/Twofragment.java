@@ -15,11 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.erh.easyreaderhelper.base.ErhApplication;
 import com.erh.easyreaderhelper.R;
 import com.erh.easyreaderhelper.adapter.LostAndFoundAdapter;
-import com.erh.easyreaderhelper.bean.LostInfomationReq;
+import com.erh.easyreaderhelper.bean.Informationpublished;
 
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.UpdateListener;
@@ -32,7 +33,7 @@ public class Twofragment extends Fragment implements LostAndFoundAdapter.ItemCli
     private LostAndFoundAdapter lostAndFoundAdapter;
     private long exitTime = 0;
     private final static int REQUEST_CODE = 999;
-    private List<LostInfomationReq> lostInfomationReqList;
+    private List<Informationpublished> informationpublishedList;
 
 
     @Override
@@ -61,13 +62,14 @@ public class Twofragment extends Fragment implements LostAndFoundAdapter.ItemCli
     }
 
     private void initData() {
-        BmobQuery<LostInfomationReq> lostInfomationReqBmobQuery = new BmobQuery<>();
+        BmobQuery<Informationpublished> lostInfomationReqBmobQuery = new BmobQuery<>();
         lostInfomationReqBmobQuery.order("-updatedAt");//排序
-        lostInfomationReqBmobQuery.findObjects(new FindListener<LostInfomationReq>() {
+        lostInfomationReqBmobQuery.addWhereEqualTo("state", 0);
+        lostInfomationReqBmobQuery.findObjects(new FindListener<Informationpublished>() {
             @Override
-            public void done(List<LostInfomationReq> list, BmobException e) {
+            public void done(List<Informationpublished> list, BmobException e) {
                 if (e == null) {
-                    lostInfomationReqList = list;
+                    informationpublishedList = list;
                     lostAndFoundAdapter.setData(list);
                     recyclerView.setAdapter(lostAndFoundAdapter);
                 } else {
@@ -79,19 +81,17 @@ public class Twofragment extends Fragment implements LostAndFoundAdapter.ItemCli
 
 
 
-
-
     /**
      * 查询数据库中最新的数据
      */
     private void refreshData() {
-        BmobQuery<LostInfomationReq> lostInfomationReqBmobQuery = new BmobQuery<>();
+        BmobQuery<Informationpublished> lostInfomationReqBmobQuery = new BmobQuery<>();
         lostInfomationReqBmobQuery.order("-updatedAt");//按更新时间排序
-        lostInfomationReqBmobQuery.findObjects(new FindListener<LostInfomationReq>() {
+        lostInfomationReqBmobQuery.findObjects(new FindListener<Informationpublished>() {
             @Override
-            public void done(List<LostInfomationReq> list, BmobException e) {
+            public void done(List<Informationpublished> list, BmobException e) {
                 if (e == null) {
-                    lostInfomationReqList = list;
+                    informationpublishedList = list;
                     lostAndFoundAdapter.setData(list);
                     lostAndFoundAdapter.notifyDataSetChanged();
                 }
@@ -116,15 +116,15 @@ public class Twofragment extends Fragment implements LostAndFoundAdapter.ItemCli
 
 
     private void deleteItemData(final int position) {
-        if (lostInfomationReqList.size() != 0) {
-            LostInfomationReq lostInfomationReq = new LostInfomationReq();
-            lostInfomationReq.setObjectId(lostInfomationReqList.get(position).getObjectId());
-            lostInfomationReq.delete(new UpdateListener() {
+        if (informationpublishedList.size() != 0) {
+            Informationpublished informationpublished = new Informationpublished();
+            informationpublished.setObjectId(informationpublishedList.get(position).getObjectId());
+            informationpublished.delete(new UpdateListener() {
                 @Override
                 public void done(BmobException e) {
                     if (e == null) {
-                        lostInfomationReqList.remove(position);
-                        lostAndFoundAdapter.setData(lostInfomationReqList);
+                        informationpublishedList.remove(position);
+                        lostAndFoundAdapter.setData(informationpublishedList);
                         lostAndFoundAdapter.notifyDataSetChanged();
                     } else {
                         //showToast("删除数据失败");
